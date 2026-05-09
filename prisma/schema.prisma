@@ -1,0 +1,407 @@
+// Oudfinder — Prisma Schema
+// Database: PostgreSQL via Supabase
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── USER ───────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  username      String    @unique
+  displayName   String?
+  avatarUrl     String?
+  bio           String?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  collection    CollectionItem[]
+  wishlist      WishlistItem[]
+  reviews       Review[]
+  posts         Post[]
+  comments      Comment[]
+  likes         Like[]
+  followers     Follow[]  @relation("following")
+  following     Follow[]  @relation("follower")
+  notifications Notification[]
+
+  @@map("users")
+}
+
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  follower    User     @relation("follower", fields: [followerId], references: [id])
+  followerId  String
+  following   User     @relation("following", fields: [followingId], references: [id])
+  followingId String
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+// ─── FRAGRANCE ──────────────────────────────────────────
+
+model Brand {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  slug        String      @unique
+  logoUrl     String?
+  country     String?
+  description String?
+  website     String?
+  founded     Int?
+  createdAt   DateTime    @default(now())
+
+  fragrances  Fragrance[]
+
+  @@map("brands")
+}
+
+model Fragrance {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  brandId       String
+  brand         Brand     @relation(fields: [brandId], references: [id])
+  perfumer      String?
+  releaseYear   Int?
+  imageUrl      String?
+  description   String?
+  aiSummary     String?
+  gender        Gender    @default(UNISEX)
+  concentration Concentration?
+  priceRange    PriceRange?
+  longevity     Int?      // 1-5
+  sillage       Int?      // 1-5
+  projection    Int?      // 1-5
+  avgRating     Float?    @default(0)
+  ratingCount   Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  notes         FragranceNote[]
+  accords       FragranceAccord[]
+  seasons       FragranceSeason[]
+  occasions     FragranceOccasion[]
+  reviews       Review[]
+  collection    CollectionItem[]
+  wishlist      WishlistItem[]
+  purchaseLinks PurchaseLink[]
+  dupesAs       Dupe[]    @relation("original")
+  dupesFor      Dupe[]    @relation("dupe")
+  similarA      SimilarFragrance[] @relation("fragA")
+  similarB      SimilarFragrance[] @relation("fragB")
+
+  @@index([brandId])
+  @@index([avgRating])
+  @@map("fragrances")
+}
+
+enum Gender {
+  MASCULINE
+  FEMININE
+  UNISEX
+}
+
+enum Concentration {
+  EDC
+  EDT
+  EDP
+  PARFUM
+  EXTRAIT
+}
+
+enum PriceRange {
+  BUDGET      // < €50
+  MID         // €50–150
+  PREMIUM     // €150–300
+  LUXURY      // > €300
+}
+
+model Note {
+  id         String          @id @default(cuid())
+  name       String          @unique
+  slug       String          @unique
+  family     NoteFamily
+  imageUrl   String?
+
+  fragrances FragranceNote[]
+
+  @@map("notes")
+}
+
+enum NoteFamily {
+  FLORAL
+  WOODY
+  ORIENTAL
+  FRESH
+  FOUGERE
+  CHYPRE
+  GOURMAND
+  AQUATIC
+  AROMATIC
+  EARTHY
+}
+
+model FragranceNote {
+  id           String    @id @default(cuid())
+  fragranceId  String
+  fragrance    Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  noteId       String
+  note         Note      @relation(fields: [noteId], references: [id])
+  position     NotePosition
+
+  @@unique([fragranceId, noteId])
+  @@map("fragrance_notes")
+}
+
+enum NotePosition {
+  TOP
+  HEART
+  BASE
+}
+
+model Accord {
+  id         String            @id @default(cuid())
+  name       String            @unique
+  slug       String            @unique
+  color      String?
+
+  fragrances FragranceAccord[]
+
+  @@map("accords")
+}
+
+model FragranceAccord {
+  id          String    @id @default(cuid())
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  accordId    String
+  accord      Accord    @relation(fields: [accordId], references: [id])
+  strength    Int?      // 1-100
+
+  @@unique([fragranceId, accordId])
+  @@map("fragrance_accords")
+}
+
+model FragranceSeason {
+  id          String    @id @default(cuid())
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  season      Season
+
+  @@unique([fragranceId, season])
+  @@map("fragrance_seasons")
+}
+
+enum Season {
+  SPRING
+  SUMMER
+  AUTUMN
+  WINTER
+}
+
+model FragranceOccasion {
+  id          String    @id @default(cuid())
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  occasion    Occasion
+
+  @@unique([fragranceId, occasion])
+  @@map("fragrance_occasions")
+}
+
+enum Occasion {
+  DAILY
+  OFFICE
+  DATE
+  FORMAL
+  CASUAL
+  SPORT
+  EVENING
+  SPECIAL
+}
+
+model SimilarFragrance {
+  id      String    @id @default(cuid())
+  fragA   Fragrance @relation("fragA", fields: [fragAId], references: [id])
+  fragAId String
+  fragB   Fragrance @relation("fragB", fields: [fragBId], references: [id])
+  fragBId String
+  score   Float     // 0-1 similarity score
+
+  @@unique([fragAId, fragBId])
+  @@map("similar_fragrances")
+}
+
+model Dupe {
+  id         String    @id @default(cuid())
+  original   Fragrance @relation("original", fields: [originalId], references: [id])
+  originalId String
+  dupe       Fragrance @relation("dupe", fields: [dupeId], references: [id])
+  dupeId     String
+  matchScore Int       // 0-100
+  savingEur  Int?      // approx savings in EUR
+  notes      String?
+
+  @@unique([originalId, dupeId])
+  @@map("dupes")
+}
+
+// ─── USER COLLECTION ────────────────────────────────────
+
+model CollectionItem {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id])
+  bottleSize  String?
+  purchasedAt DateTime?
+  notes       String?
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, fragranceId])
+  @@map("collection_items")
+}
+
+model WishlistItem {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id])
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, fragranceId])
+  @@map("wishlist_items")
+}
+
+// ─── REVIEWS ────────────────────────────────────────────
+
+model Review {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  rating      Int       // 1-5
+  title       String?
+  body        String
+  longevity   Int?      // 1-5
+  sillage     Int?      // 1-5
+  season      Season?
+  occasion    Occasion?
+  likes       Like[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([userId, fragranceId])
+  @@index([fragranceId])
+  @@map("reviews")
+}
+
+// ─── COMMUNITY ──────────────────────────────────────────
+
+model Post {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String
+  category  PostCategory
+  tags      String[]
+  comments  Comment[]
+  likes     Like[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([category])
+  @@map("posts")
+}
+
+enum PostCategory {
+  RECOMMENDATION
+  DISCUSSION
+  DUPE
+  REVIEW
+  NEWS
+  QUESTION
+}
+
+model Comment {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String?
+  post      Post?     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  parentId  String?
+  parent    Comment?  @relation("replies", fields: [parentId], references: [id])
+  replies   Comment[] @relation("replies")
+  body      String
+  likes     Like[]
+  createdAt DateTime  @default(now())
+
+  @@map("comments")
+}
+
+model Like {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviewId  String?
+  review    Review?  @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  postId    String?
+  post      Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  commentId String?
+  comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@map("likes")
+}
+
+// ─── AFFILIATE / PURCHASE ───────────────────────────────
+
+model PurchaseLink {
+  id          String    @id @default(cuid())
+  fragranceId String
+  fragrance   Fragrance @relation(fields: [fragranceId], references: [id], onDelete: Cascade)
+  retailer    String
+  url         String
+  priceEur    Float?
+  inStock     Boolean   @default(true)
+  isBestDeal  Boolean   @default(false)
+  updatedAt   DateTime  @updatedAt
+
+  @@map("purchase_links")
+}
+
+// ─── NOTIFICATIONS ──────────────────────────────────────
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  payload   Json
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, read])
+  @@map("notifications")
+}
