@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #faf9f7;
+  --bg-muted: #f5f4f1;
+  --border: #e8e6e1;
+  --border-subtle: #f0ede8;
+  --text: #111111;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --accent: #2c2c2c;
+  --accent-warm: #8b7355;
+  --stone: #9b8b73;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f5f4f1; }
+::-webkit-scrollbar-thumb { background: #d0cdc8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9b8b73; }
+
+::selection { background: rgba(155, 139, 115, 0.15); color: #111; }
+
+/* Card shadow */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+}
+.card-shadow-md {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+}
+.card-shadow-lg {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Scroll row */
+.scroll-row {
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-row::-webkit-scrollbar { display: none; }
+
+/* Divider */
+.divider {
+  border: none;
+  border-top: 1px solid #e8e6e1;
+}
+
+/* Mobile safe area */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .mobile-nav { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-up { animation: fadeUp 0.5s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.skeleton {
+  background: linear-gradient(90deg, #f5f4f1 0%, #ebe9e5 50%, #f5f4f1 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
