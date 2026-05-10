@@ -5,16 +5,16 @@
 //  This file is updated automatically by the admin UI at /admin/images
 //  whenever a new image is uploaded. You can also edit it by hand.
 //
-//  Add an entry like:
-//      "baccarat-rouge-540": "webp",
-//  and place the file at:
-//      public/perfumes/baccarat-rouge-540.webp
-//
-//  The runtime checks this map first; falls back to the generated SVG
-//  placeholder when the slug is missing.
+//  All images currently in this manifest were sourced from Wikimedia
+//  Commons under Public Domain / CC-BY / CC-BY-SA licenses. Attribution
+//  is published at /credits.
 // ─────────────────────────────────────────────────────────────────────────
 
 export const perfumeImageManifest: Record<string, string> = {
-  // example — uncomment after uploading public/perfumes/baccarat-rouge-540.webp
-  // "baccarat-rouge-540": "webp",
+  "1-million": "jpg",
+  "coco-mademoiselle": "jpg",
+  "jadore": "jpg",
+  "no-5": "jpg",
+  "santal-33": "jpg",
+  "shalimar": "jpg",
 };

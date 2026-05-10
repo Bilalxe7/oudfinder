@@ -16,6 +16,7 @@ const links = {
   info: [
     { label: "Über oudfinder", href: "/ueber-uns" },
     { label: "Kontakt", href: "/kontakt" },
+    { label: "Bildquellen", href: "/credits" },
     { label: "Datenschutz", href: "/datenschutz" },
     { label: "Impressum", href: "/impressum" },
     { label: "AGB", href: "/agb" },

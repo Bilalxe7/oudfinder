@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ki-berater/quiz",
     "/ueber-uns",
     "/kontakt",
+    "/credits",
     "/impressum",
     "/datenschutz",
     "/agb",
