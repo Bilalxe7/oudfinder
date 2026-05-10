@@ -67,8 +67,8 @@ export function HeroSection() {
             </h1>
 
             <p className="text-[15px] text-[#7a756d] mb-7 leading-relaxed max-w-md">
-              Über 50.000 Parfums, echte Bewertungen und KI-gestützte
-              Empfehlungen — kostenlos.
+              Kuratierte Parfum-Datenbank, ehrliche Redaktion und ein
+              KI-Berater, der zu dir passende Düfte vorschlägt — kostenlos.
             </p>
 
             {/* ───── Search ───── */}
@@ -145,16 +145,10 @@ export function HeroSection() {
             {/* ───── Trust strip ───── */}
             <div className="flex flex-wrap items-center gap-x-7 gap-y-1.5 text-sm border-t border-[#ece9e3] pt-5 max-w-xl">
               <span>
-                <span className="font-semibold text-[#111111] tabular-nums">
-                  50.000+
-                </span>{" "}
-                <span className="text-[#9b9389]">Parfums</span>
+                <span className="font-semibold text-[#111111]">Redaktionell kuratiert</span>
               </span>
               <span>
-                <span className="font-semibold text-[#111111] tabular-nums">
-                  2 Mio+
-                </span>{" "}
-                <span className="text-[#9b9389]">Bewertungen</span>
+                <span className="font-semibold text-[#111111]">KI-Empfehlungen</span>
               </span>
               <span className="font-semibold text-[#9b8b73]">
                 100 % kostenlos

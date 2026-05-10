@@ -15,6 +15,7 @@ const links = {
   ],
   info: [
     { label: "Über oudfinder", href: "/ueber-uns" },
+    { label: "Kontakt", href: "/kontakt" },
     { label: "Datenschutz", href: "/datenschutz" },
     { label: "Impressum", href: "/impressum" },
     { label: "AGB", href: "/agb" },
@@ -73,7 +74,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-[#e8e6e1] pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-[#bbbbbb]">© 2025 oudfinder.de</p>
+          <p className="text-xs text-[#bbbbbb]">© {new Date().getFullYear()} oudfinder.de</p>
           <p className="text-xs text-[#cccccc]">* Affiliate-Links – ohne Mehrkosten für dich</p>
         </div>
       </div>

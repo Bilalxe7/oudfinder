@@ -33,7 +33,7 @@ export default function CommunityPage() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <p className="text-[11px] font-semibold text-[#9b8b73] uppercase tracking-widest mb-2">Mitglieder</p>
+          <p className="text-[11px] font-semibold text-[#9b8b73] uppercase tracking-widest mb-2">Community</p>
           <div className="flex items-center gap-3 mb-2">
             <Users className="w-5 h-5 text-[#9b8b73]" />
             <h1 className="text-3xl font-serif font-medium text-[#111111]">Duftliebhaber vereint</h1>
@@ -43,20 +43,26 @@ export default function CommunityPage() {
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          {[
-            { icon: Users, value: "500.000+", label: "Mitglieder" },
-            { icon: Star, value: "2 Mio+", label: "Bewertungen" },
-            { icon: MessageCircle, value: "450.000+", label: "Kommentare" },
-            { icon: Heart, value: "8 Mio+", label: "Favoriten" },
-          ].map(({ icon: Icon, value, label }) => (
-            <div key={label} className="bg-[#faf9f7] border border-[#e8e6e1] rounded-2xl p-5 text-center">
-              <Icon className="w-4 h-4 text-[#9b8b73] mx-auto mb-2" />
-              <p className="text-xl font-semibold text-[#111111]">{value}</p>
-              <p className="text-xs text-[#888888] mt-0.5">{label}</p>
-            </div>
-          ))}
+        {/* Beta-Banner */}
+        <div className="mb-10 flex items-start gap-3 bg-[#faf8f4] border border-[#ece9e3] rounded-2xl p-4 sm:p-5">
+          <div className="w-8 h-8 rounded-full bg-[#9b8b73]/15 flex items-center justify-center flex-shrink-0">
+            <Users className="w-4 h-4 text-[#9b8b73]" />
+          </div>
+          <div className="text-sm text-[#3a3530] leading-relaxed">
+            <p className="font-semibold text-[#111111] mb-0.5">Community im Aufbau</p>
+            <p className="text-[#7a756d]">
+              Die Aktivitäten und Top-Mitglieder weiter unten zeigen
+              beispielhafte Inhalte. Sobald Accounts verfügbar sind, wirst
+              du hier echte Bewertungen aus der oudfinder-Community sehen.{" "}
+              <Link
+                href="/registrieren"
+                className="font-medium text-[#5a3818] underline underline-offset-2 hover:text-[#111111] transition-colors"
+              >
+                Auf die Warteliste
+              </Link>
+              .
+            </p>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
