@@ -75,7 +75,7 @@ export function Footer() {
 
         <div className="border-t border-[#e8e6e1] pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-[#bbbbbb]">© {new Date().getFullYear()} oudfinder.de</p>
-          <p className="text-xs text-[#cccccc]">* Affiliate-Links – ohne Mehrkosten für dich</p>
+          <p className="text-xs text-[#cccccc]">Redaktionelles Projekt aus Herdecke</p>
         </div>
       </div>
     </footer>

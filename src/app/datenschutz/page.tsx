@@ -25,14 +25,14 @@ export default function DatenschutzPage() {
         Verantwortlich für die Datenverarbeitung auf dieser Website ist:
       </p>
       <p>
-        <strong>[Vor- und Nachname]</strong>
+        <strong>Bilal El Hammi</strong>
         <br />
-        [Anschrift]
+        Grünstraße 4
+        <br />
+        58313 Herdecke
         <br />
         E-Mail:{" "}
-        <a href="mailto:datenschutz@oudfinder.de">
-          datenschutz@oudfinder.de
-        </a>
+        <a href="mailto:info@oudfinder.de">info@oudfinder.de</a>
       </p>
 
       <h2>2. Bereitstellung der Website und Erstellung von Logfiles</h2>
@@ -63,27 +63,27 @@ export default function DatenschutzPage() {
         oder Analyse-Cookies</strong>. Technisch notwendige Cookies werden
         nur dann gesetzt, wenn dies für die Funktionalität (z. B. eine
         Anmeldung) zwingend erforderlich ist. Falls künftig Cookies
-        eingesetzt werden, wirst du vorab über einen Cookie-Banner um deine
-        Einwilligung gebeten.
+        eingesetzt werden, wirst du vorab über einen Cookie-Banner um
+        deine Einwilligung gebeten.
       </p>
 
       <h2>4. Suchanfragen und Filter</h2>
       <p>
-        Die Suche und die Filter auf der Seite{" "}
-        <code>/entdecken</code> werden vollständig im Browser ausgeführt.
-        Deine Eingaben werden nicht an unseren Server gesendet und nicht
-        gespeichert. Die aktuell aktiven Filter werden als
-        URL-Parameter dargestellt, damit du den Link teilen kannst.
+        Die Suche und die Filter auf der Seite <code>/entdecken</code>{" "}
+        werden vollständig im Browser ausgeführt. Deine Eingaben werden
+        nicht an unseren Server gesendet und nicht gespeichert. Die
+        aktuell aktiven Filter werden als URL-Parameter dargestellt, damit
+        du den Link teilen kannst.
       </p>
 
       <h2>5. KI-Berater</h2>
       <p>
         Wenn du den KI-Berater nutzt, werden deine Eingaben an einen
         externen KI-Anbieter übermittelt, um eine Antwort zu generieren.
-        Wir speichern die Chat-Inhalte nicht dauerhaft auf unseren Servern.
-        Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Erbringung des
-        angeforderten Dienstes) bzw. Art. 6 Abs. 1 lit. a DSGVO
-        (Einwilligung durch aktive Nutzung).
+        Wir speichern die Chat-Inhalte nicht dauerhaft auf unseren
+        Servern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO
+        (Erbringung des angeforderten Dienstes) bzw. Art. 6 Abs. 1 lit. a
+        DSGVO (Einwilligung durch aktive Nutzung).
       </p>
 
       <h2>6. Hosting (Vercel)</h2>
@@ -111,15 +111,13 @@ export default function DatenschutzPage() {
         .
       </p>
 
-      <h2>7. Affiliate-Links</h2>
+      <h2>7. Externe Verlinkungen</h2>
       <p>
-        Wir setzen auf den Produktseiten Affiliate-Links zu Online-Händlern
-        wie Douglas, Flaconi und Notino ein. Wenn du einem solchen Link
-        folgst, kann der jeweilige Händler Cookies setzen, um die
-        Vermittlung zu identifizieren. Diese Datenverarbeitung erfolgt
-        ausschließlich durch den Händler unter dessen
-        Datenschutzbestimmungen. Wir erhalten lediglich aggregierte
-        Provisions-Auszahlungen, keine Personendaten.
+        Auf einzelnen Produktseiten verlinken wir auf externe
+        Online-Händler (etwa Douglas, Flaconi oder Notino), damit du
+        Düfte dort selbstständig kaufen kannst. Sobald du einem solchen
+        Link folgst, gelten die Datenschutzbestimmungen des jeweiligen
+        Händlers; auf dessen Datenverarbeitung haben wir keinen Einfluss.
       </p>
 
       <h2>8. Deine Rechte</h2>
@@ -135,26 +133,32 @@ export default function DatenschutzPage() {
       </ul>
       <p>
         Wende dich dazu formlos an{" "}
-        <a href="mailto:datenschutz@oudfinder.de">
-          datenschutz@oudfinder.de
-        </a>
-        .
+        <a href="mailto:info@oudfinder.de">info@oudfinder.de</a>.
       </p>
 
       <h2>9. Beschwerderecht bei der Aufsichtsbehörde</h2>
       <p>
         Unbeschadet eines anderweitigen verwaltungsrechtlichen oder
-        gerichtlichen Rechtsbehelfs steht dir das Recht zu, dich bei einer
-        Datenschutz-Aufsichtsbehörde zu beschweren. Eine Liste der
-        deutschen Behörden findest du unter:{" "}
+        gerichtlichen Rechtsbehelfs steht dir das Recht zu, dich bei
+        einer Datenschutz-Aufsichtsbehörde zu beschweren. Für
+        Nordrhein-Westfalen ist die zuständige Behörde:
+      </p>
+      <p>
+        Landesbeauftragte für Datenschutz und Informationsfreiheit
+        Nordrhein-Westfalen
+        <br />
+        Kavalleriestraße 2–4
+        <br />
+        40213 Düsseldorf
+        <br />
+        Web:{" "}
         <a
-          href="https://www.bfdi.bund.de/DE/Service/Anschriften/anschriften-node.html"
+          href="https://www.ldi.nrw.de"
           target="_blank"
           rel="noopener noreferrer"
         >
-          bfdi.bund.de
+          ldi.nrw.de
         </a>
-        .
       </p>
 
       <h2>10. Aktualität und Änderung dieser Datenschutzerklärung</h2>
@@ -163,11 +167,6 @@ export default function DatenschutzPage() {
         vom oben angegebenen Datum. Wir behalten uns vor, diese Erklärung
         bei Änderungen unserer Dienste oder rechtlichen Vorgaben
         anzupassen.
-      </p>
-
-      <p className="text-xs text-[#9b9389] mt-12">
-        Hinweis: Die mit [eckigen Klammern] markierten Stellen müssen vor
-        Veröffentlichung mit den tatsächlichen Angaben befüllt werden.
       </p>
     </LegalPage>
   );

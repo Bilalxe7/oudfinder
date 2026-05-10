@@ -13,24 +13,22 @@ export default function KontaktPage() {
         oder Hinweise zu Düften, die noch fehlen.
       </p>
 
-      <h2>Allgemein</h2>
+      <h2>E-Mail</h2>
       <p>
-        E-Mail:{" "}
-        <a href="mailto:kontakt@oudfinder.de">kontakt@oudfinder.de</a>
+        <a href="mailto:info@oudfinder.de">info@oudfinder.de</a>
+      </p>
+      <p className="text-sm text-[#7a756d]">
+        Diese Adresse erreichst du für allgemeine Anfragen, Presse,
+        Kooperationen sowie Anliegen rund um den Datenschutz.
       </p>
 
-      <h2>Datenschutz</h2>
+      <h2>Postanschrift</h2>
       <p>
-        Anfragen nach Art. 15–22 DSGVO:{" "}
-        <a href="mailto:datenschutz@oudfinder.de">
-          datenschutz@oudfinder.de
-        </a>
-      </p>
-
-      <h2>Presse &amp; Partnerschaften</h2>
-      <p>
-        Bitte mit kurzer Angabe zum Thema an{" "}
-        <a href="mailto:kontakt@oudfinder.de">kontakt@oudfinder.de</a>.
+        Bilal El Hammi
+        <br />
+        Grünstraße 4
+        <br />
+        58313 Herdecke
       </p>
     </LegalPage>
   );

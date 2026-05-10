@@ -35,28 +35,27 @@ export default function UeberUnsPage() {
         </li>
       </ul>
 
-      <h2>Wie wir uns finanzieren</h2>
+      <h2>Wer dahinter steht</h2>
       <p>
-        Wir verdienen über Affiliate-Links zu Online-Händlern wie
-        Douglas, Flaconi oder Notino. Wenn du über einen dieser Links
-        einen Duft kaufst, erhalten wir eine kleine Provision. Für dich
-        ändert sich am Preis nichts. Diese Einnahmen finanzieren die
-        Plattform und ermöglichen es uns, sie für dich kostenlos zu
-        halten.
+        oudfinder.de ist ein redaktionelles Hobby-Projekt von Bilal El
+        Hammi aus Herdecke. Wir betreiben die Plattform nicht-kommerziell;
+        sollten wir künftig Affiliate-Partnerschaften mit Online-Händlern
+        wie Douglas, Flaconi oder Notino eingehen, weisen wir dies
+        transparent aus und kennzeichnen entsprechende Links — für dich
+        entstehen dadurch in keinem Fall Mehrkosten.
       </p>
 
       <h2>Redaktionelle Unabhängigkeit</h2>
       <p>
-        Affiliate-Partnerschaften beeinflussen unsere redaktionellen
-        Empfehlungen nicht. Wir empfehlen Düfte, die wir oder unsere
-        Community gut finden — unabhängig davon, ob sie bei einem
-        Partner-Shop geführt werden.
+        Empfehlungen geben unsere ehrliche Einschätzung wieder. Mögliche
+        spätere Partnerschaften beeinflussen die redaktionelle Auswahl
+        nicht.
       </p>
 
       <h2>Kontakt</h2>
       <p>
         Feedback, Vorschläge oder Anfragen:{" "}
-        <a href="mailto:kontakt@oudfinder.de">kontakt@oudfinder.de</a>.
+        <a href="mailto:info@oudfinder.de">info@oudfinder.de</a>.
       </p>
     </LegalPage>
   );
