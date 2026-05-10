@@ -110,8 +110,16 @@ export function Navbar() {
 
             {/* Right actions */}
             <div className="flex items-center gap-2">
-              {/* Search */}
-              <div ref={searchRef} className="relative">
+              {/* Search — hidden on the homepage at scroll-top
+                 (the hero already has a big, prominent search bar).
+                 Appears as soon as the user scrolls past the hero. */}
+              <div
+                ref={searchRef}
+                className={cn(
+                  "relative",
+                  pathname === "/" && !scrolled && "hidden",
+                )}
+              >
                 <button
                   onClick={() => setSearchOpen(!searchOpen)}
                   className={cn(

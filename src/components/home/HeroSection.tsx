@@ -8,7 +8,7 @@ import { StarRating } from "@/components/ui/StarRating";
 import { imageFor } from "@/lib/perfume-image";
 import { PerfumeImage } from "@/components/perfume/PerfumeImage";
 
-const suggestions = ["Oud", "Tom Ford", "Frisch", "Vanille", "Rose", "Sommer"];
+const suggestions = ["Oud", "Tom Ford", "Vanille", "Frisch"];
 
 export function HeroSection() {
   const [query, setQuery] = useState("");
@@ -66,13 +66,13 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-[15px] text-[#7a756d] mb-7 leading-relaxed max-w-md">
+            <p className="text-[15px] text-[#7a756d] mb-8 leading-relaxed max-w-md">
               Kuratierte Parfum-Datenbank, ehrliche Redaktion und ein
               KI-Berater, der zu dir passende Düfte vorschlägt — kostenlos.
             </p>
 
             {/* ───── Search ───── */}
-            <div className="relative mb-5 max-w-xl">
+            <div className="relative mb-4 max-w-xl">
               <form onSubmit={submit}>
                 <div className="flex items-center bg-white border border-[#d8d2c8] rounded-2xl shadow-[0_2px_12px_rgba(20,16,8,0.05)] hover:border-[#b5ada1] focus-within:border-[#111111] focus-within:shadow-[0_4px_20px_rgba(20,16,8,0.10)] transition-all duration-200">
                   <Search className="w-4 h-4 text-[#b8b0a4] ml-4 flex-shrink-0" />
@@ -128,7 +128,10 @@ export function HeroSection() {
             </div>
 
             {/* ───── Quick tags ───── */}
-            <div className="flex flex-wrap gap-2 mb-7 max-w-xl">
+            <div className="flex flex-wrap items-center gap-2 mb-10 max-w-xl">
+              <span className="text-[10px] font-semibold text-[#9b8b73] uppercase tracking-[0.14em] mr-1">
+                Beliebt:
+              </span>
               {suggestions.map((s) => (
                 <button
                   key={s}
@@ -143,7 +146,7 @@ export function HeroSection() {
             </div>
 
             {/* ───── Trust strip ───── */}
-            <div className="flex flex-wrap items-center gap-x-7 gap-y-1.5 text-sm border-t border-[#ece9e3] pt-5 max-w-xl">
+            <div className="flex flex-wrap items-center gap-x-7 gap-y-1.5 text-sm border-t border-[#ece9e3] pt-6 max-w-xl">
               <span>
                 <span className="font-semibold text-[#111111]">Redaktionell kuratiert</span>
               </span>
