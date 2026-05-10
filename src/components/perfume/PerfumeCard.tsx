@@ -3,58 +3,17 @@ import Link from "next/link";
 import { Heart } from "lucide-react";
 import { Parfum } from "@/lib/data/perfumes";
 import { StarRating } from "@/components/ui/StarRating";
+import { PerfumeImage } from "@/components/perfume/PerfumeImage";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { generatePerfumeImage } from "@/lib/perfume-image";
 
 interface PerfumeCardProps {
   parfum: Parfum;
   variant?: "default" | "compact" | "horizontal" | "featured";
   className?: string;
   rank?: number;
-}
-
-/**
- * Renders the perfume's image. We always use a generated SVG placeholder
- * (brand-tinted, monogrammed) so cards are visually consistent and never
- * show broken/wrong photos.
- */
-function PerfumeImage({
-  parfum,
-  className,
-  scale = "card",
-}: {
-  parfum: Parfum;
-  className?: string;
-  scale?: "card" | "banner";
-}) {
-  const src =
-    scale === "banner"
-      ? generatePerfumeImage({
-          brand: parfum.marke,
-          name: parfum.name,
-          family: parfum.duftfamilie,
-          width: 1200,
-          height: 800,
-        })
-      : generatePerfumeImage({
-          brand: parfum.marke,
-          name: parfum.name,
-          family: parfum.duftfamilie,
-        });
-
-  return (
-    <img
-      src={src}
-      alt={`${parfum.marke} ${parfum.name}`}
-      className={cn(
-        "absolute inset-0 w-full h-full object-cover transition-transform duration-700",
-        className,
-      )}
-      loading="lazy"
-      decoding="async"
-    />
-  );
+  /** Pass `true` for above-the-fold cards (eager-load real images) */
+  priority?: boolean;
 }
 
 export function PerfumeCard({

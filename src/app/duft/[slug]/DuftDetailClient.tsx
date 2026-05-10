@@ -5,7 +5,7 @@ import { Heart, Share2, ShoppingBag, ChevronLeft, BookmarkPlus, ThumbsUp, Clock,
 import { Parfum, parfums } from "@/lib/data/perfumes";
 import { StarRating } from "@/components/ui/StarRating";
 import { PerfumeCard } from "@/components/perfume/PerfumeCard";
-import { imageFor } from "@/lib/perfume-image";
+import { PerfumeImage } from "@/components/perfume/PerfumeImage";
 import { cn } from "@/lib/utils";
 
 const jahreszeichenEmoji: Record<string, string> = { fruehling: "🌸 Frühling", sommer: "☀️ Sommer", herbst: "🍂 Herbst", winter: "❄️ Winter" };
@@ -67,7 +67,7 @@ export function DuftDetailClient({ parfum }: { parfum: Parfum }) {
     <div className="min-h-screen bg-white pt-14 pb-24 md:pb-8">
       {/* Hero image */}
       <div className="relative h-64 md:h-[420px] overflow-hidden">
-        <img src={imageFor(parfum, "banner")} alt={`${parfum.marke} ${parfum.name}`} className="w-full h-full object-cover" />
+        <PerfumeImage parfum={parfum} scale="banner" priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent" />
 
         {/* Back */}

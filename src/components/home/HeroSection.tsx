@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { parfums } from "@/lib/data/perfumes";
 import { StarRating } from "@/components/ui/StarRating";
 import { imageFor } from "@/lib/perfume-image";
+import { PerfumeImage } from "@/components/perfume/PerfumeImage";
 
 const suggestions = ["Oud", "Tom Ford", "Frisch", "Vanille", "Rose", "Sommer"];
 
@@ -169,10 +170,12 @@ export function HeroSection() {
                   className="relative rounded-[28px] overflow-hidden group cursor-pointer shadow-[0_20px_60px_rgba(20,16,8,0.14)]"
                   style={{ height: "520px" }}
                 >
-                  <img
-                    src={imageFor(featured, "banner")}
-                    alt={`${featured.marke} ${featured.name}`}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                  <PerfumeImage
+                    parfum={featured}
+                    scale="banner"
+                    priority
+                    sizes="(min-width: 1280px) 440px, (min-width: 1024px) 400px, 340px"
+                    className="group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 

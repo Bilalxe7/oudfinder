@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { parfums } from "@/lib/data/perfumes";
 import { StarRating } from "@/components/ui/StarRating";
-import { imageFor } from "@/lib/perfume-image";
+import { PerfumeImage } from "@/components/perfume/PerfumeImage";
 
 export function DuftDesMonats() {
   // Editor-curated highlight — Tom Ford Tobacco Vanille
@@ -14,10 +14,10 @@ export function DuftDesMonats() {
         <div className="grid md:grid-cols-2 gap-0 rounded-[28px] overflow-hidden border border-[#ece9e3] bg-white shadow-[0_8px_32px_rgba(20,16,8,0.06)]">
           {/* Image — full height */}
           <div className="relative min-h-[320px] md:min-h-[520px] overflow-hidden">
-            <img
-              src={imageFor(duft, "banner")}
-              alt={`${duft.marke} ${duft.name}`}
-              className="absolute inset-0 w-full h-full object-cover"
+            <PerfumeImage
+              parfum={duft}
+              scale="banner"
+              sizes="(min-width: 768px) 50vw, 100vw"
             />
             <div className="absolute top-5 left-5">
               <span className="text-[10px] font-semibold text-[#5a4d3a] bg-white/90 backdrop-blur-sm border border-white/60 px-2.5 py-1 rounded-full tracking-[0.12em] uppercase">
